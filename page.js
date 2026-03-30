@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 export default function SpotterDashboard() {
   const [data, setData] = useState(null);
@@ -20,56 +18,31 @@ export default function SpotterDashboard() {
   };
 
   return (
-    <div className="p-6 grid gap-6">
-      <h1 className="text-2xl font-bold">YBBN Spotter Dashboard</h1>
-
-      <Button onClick={loadSample}>Load Today’s Brief</Button>
+    <div style={{ padding: '2rem', fontFamily: 'Arial, sans-serif' }}>
+      <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>YBBN Spotter Dashboard</h1>
+      <button onClick={loadSample} style={{ margin: '1rem 0', padding: '0.5rem 1rem' }}>Load Today’s Brief</button>
 
       {data && (
         <>
-          <Card>
-            <CardContent className="p-4">
-              <h2 className="text-xl font-semibold mb-2">🔥 Highlights</h2>
-              <ul className="list-disc ml-5">
-                {data.highlights.map((h, i) => (
-                  <li key={i}>{h}</li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+          <section style={{ marginBottom: '1rem' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>🔥 Highlights</h2>
+            <ul>{data.highlights.map((h, i) => <li key={i}>{h}</li>)}</ul>
+          </section>
 
-          <Card>
-            <CardContent className="p-4">
-              <h2 className="text-xl font-semibold mb-2">🛬 Arrivals</h2>
-              <ul>
-                {data.arrivals.map((a, i) => (
-                  <li key={i}>{a.time} — {a.flight} ({a.type})</li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+          <section style={{ marginBottom: '1rem' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>🛬 Arrivals</h2>
+            <ul>{data.arrivals.map((a, i) => <li key={i}>{a.time} — {a.flight} ({a.type})</li>)}</ul>
+          </section>
 
-          <Card>
-            <CardContent className="p-4">
-              <h2 className="text-xl font-semibold mb-2">🛫 Departures</h2>
-              <ul>
-                {data.departures.map((d, i) => (
-                  <li key={i}>{d.time} — {d.flight} ({d.type})</li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+          <section style={{ marginBottom: '1rem' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>🛫 Departures</h2>
+            <ul>{data.departures.map((d, i) => <li key={i}>{d.time} — {d.flight} ({d.type})</li>)}</ul>
+          </section>
 
-          <Card>
-            <CardContent className="p-4">
-              <h2 className="text-xl font-semibold mb-2">👀 Notes</h2>
-              <ul className="list-disc ml-5">
-                {data.notes.map((n, i) => (
-                  <li key={i}>{n}</li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+          <section>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>👀 Notes</h2>
+            <ul>{data.notes.map((n, i) => <li key={i}>{n}</li>)}</ul>
+          </section>
         </>
       )}
     </div>
